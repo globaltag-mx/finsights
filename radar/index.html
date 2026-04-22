@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radar Banca Digital 2025 — Índice Completo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --navy: #29306f;
+    --orange: #E8500A;
+    --orange-light: #f07040;
+    --green: #2ECC71;
+    --teal: #1ABC9C;
+    --yellow: #F4D03F;
+    --pink: #E91E8C;
+    --blue: #4A90D9;
+    --purple: #8E44AD;
+    --coral: #F15B4C;
+    --mint: #5DCB8F;
+    --gray-mid: #C8D4E0;
+    --white: #FFFFFF;
+    --red-flag: #E74C3C;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'DM Sans',sans-serif; background:#29306f; color:var(--white); }
+
+  .nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 40px;
+    background:rgba(41,48,111,0.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-brand { font-size:13px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gray-mid); }
+  .nav-dots { display:flex; gap:8px; flex-wrap:wrap; max-width:500px; justify-content:flex-end; }
+  .nav-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:all 0.3s; border:none; }
+  .nav-dot.active { background:var(--orange); transform:scale(1.3); }
+
+  .slide { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:80px 60px 50px; position:relative; overflow:hidden; }
+
+  /* PORTADA */
+  .slide-cover { background:#29306f; }
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--orange); margin-bottom:24px; }
+  .slide-cover h1 { font-family:'DM Serif Display',serif; font-size:clamp(48px,6vw,80px); line-height:1.05; margin-bottom:12px; }
+  .slide-cover h1 em { font-style:italic; color:var(--orange); }
+  .subtitle { font-size:18px; color:var(--gray-mid); margin-bottom:48px; font-weight:300; max-width:720px; }
+  .cover-stats { display:flex; gap:40px; flex-wrap:wrap; }
+  .cover-stat { border-left:3px solid var(--orange); padding-left:16px; }
+  .cover-stat .num { font-family:'DM Serif Display',serif; font-size:36px; }
+  .cover-stat .label { font-size:12px; color:var(--gray-mid); text-transform:uppercase; letter-spacing:1px; }
+
+  .slide-title { font-family:'DM Serif Display',serif; font-size:clamp(28px,3.5vw,44px); line-height:1.1; margin-bottom:8px; }
+  .slide-title em { font-style:italic; color:var(--orange); }
+  .slide-subtitle { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:20px; font-weight:300; }
+
+  /* MÓDULOS GRID (slide índice) */
+  .modulos-grid-full { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .mod-card {
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:20px 18px;
+    position:relative; overflow:hidden;
+  }
+  .mod-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
+  .mod-1::before { background:var(--orange); }
+  .mod-2::before { background:var(--green); }
+  .mod-3::before { background:var(--red-flag); }
+  .mod-4::before { background:var(--purple); }
+  .mod-5::before { background:var(--orange-light); }
+  .mod-6::before { background:var(--coral); }
+  .mod-7::before { background:var(--mint); }
+  .mod-num { font-family:'DM Serif Display',serif; font-size:28px; color:rgba(255,255,255,0.15); margin-bottom:6px; }
+  .mod-title { font-size:13px; font-weight:700; color:var(--white); margin-bottom:6px; }
+  .mod-desc { font-size:11px; color:rgba(255,255,255,0.45); line-height:1.5; }
+
+  /* SLIDE ÍNDICE-DETALLE */
+  .idx-layout { display:grid; grid-template-columns:0.9fr 1.4fr; gap:40px; align-items:start; }
+  .idx-left h2 { margin-bottom:16px; }
+  .idx-note {
+    border-radius:10px; padding:18px 20px; margin-bottom:14px;
+  }
+  .idx-note.orange { background:rgba(232,80,10,0.1); border:1px solid rgba(232,80,10,0.2); }
+  .idx-note .inote-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:8px; }
+  .idx-note p { font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6; }
+  .idx-note p strong { color:white; }
+
+  .incluye-box {
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:18px 20px;
+  }
+  .incluye-box .ib-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:10px; }
+  .incluye-box .ib-item { font-size:12px; display:flex; gap:8px; color:rgba(255,255,255,0.6); padding:3px 0; }
+  .incluye-box .ib-item .chk { color:var(--teal); }
+
+  .idx-right .idx-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px; }
+  .idx-list { display:flex; flex-direction:column; gap:2px; padding-right:8px; }
+  .idx-sec { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin:8px 0 3px; }
+  .idx-item { font-size:11px; color:rgba(255,255,255,0.5); padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.04); line-height:1.4; }
+  .idx-item:last-child { border-bottom:none; }
+  .idx-counter { font-size:10px; color:rgba(255,255,255,0.2); margin-top:14px; margin-bottom:14px; text-align:right; }
+
+  /* Color sections per módulo */
+  .col-orange { color:var(--orange); }
+  .col-green  { color:var(--green); }
+  .col-teal   { color:var(--teal); }
+  .col-blue   { color:var(--blue); }
+  .col-yellow { color:var(--yellow); }
+  .col-pink   { color:var(--pink); }
+  .col-red    { color:var(--red-flag); }
+  .col-purple { color:var(--purple); }
+  .col-coral  { color:var(--coral); }
+  .col-mint   { color:var(--mint); }
+  .col-olight { color:var(--orange-light); }
+
+  /* CTA FINAL */
+  .cta-box {
+    background:rgba(232,80,10,0.1);
+    border:1px solid rgba(232,80,10,0.25);
+    border-radius:12px; padding:28px 32px;
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:28px; flex-wrap:wrap; gap:20px;
+  }
+  .cta-box .cta-text h3 { font-family:'DM Serif Display',serif; font-size:26px; margin-bottom:6px; }
+  .cta-box .cta-text p { font-size:13px; color:rgba(255,255,255,0.55); }
+  .cta-pill {
+    background:var(--orange); color:white;
+    padding:12px 24px; border-radius:8px;
+    font-size:13px; font-weight:700; letter-spacing:0.5px;
+    white-space:nowrap;
+  }
+
+  .slide-footer {
+    position:absolute; bottom:20px; left:60px; right:60px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:10px; color:rgba(255,255,255,0.2);
+    letter-spacing:1px; text-transform:uppercase;
+  }
+  .sep { border:none; border-top:1px solid rgba(255,255,255,0.06); margin:28px 0; }
+  .scroll-hint { position:fixed; bottom:24px; right:40px; font-size:11px; color:rgba(255,255,255,0.25); letter-spacing:2px; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+  .arr { animation:bounce 2s infinite; display:inline-block; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+
+  @media print {
+    @page { margin:0; size:1440px 900px landscape; }
+    .nav, .scroll-hint { display:none !important; }
+    .slide { page-break-before:always; page-break-inside:avoid; break-inside:avoid; min-height:100vh; height:100vh; padding:60px 80px !important; }
+    .slide:first-of-type { page-break-before:auto; }
+    .idx-list { max-height:none !important; overflow:visible !important; }
+    * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">Radar Banca Digital 2025 · Índice</div>
+  <div class="nav-dots">
+    <button class="nav-dot active" onclick="scrollToSlide(0)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(1)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(2)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(3)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(4)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(5)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(6)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(7)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(8)"></button>
+    <button class="nav-dot" onclick="scrollToSlide(9)"></button>
+  </div>
+</nav>
+
+
+<!-- ═══ SLIDE 0: PORTADA ═══ -->
+<section class="slide slide-cover" id="slide-0">
+  <div class="eyebrow">Finsights by Global Tag</div>
+  <h1>Radar de<br>Banca Digital<br><em>México 2025</em></h1>
+  <p class="subtitle">Índice completo de los 7 módulos del estudio · Temario detallado de cada uno para que tu equipo elija qué adquirir.</p>
+  <div class="cover-stats">
+    <div class="cover-stat"><div class="num">7</div><div class="label">Módulos independientes</div></div>
+    <div class="cover-stat"><div class="num">500+</div><div class="label">Entrevistas efectivas</div></div>
+    <div class="cover-stat"><div class="num">2025</div><div class="label">Estudio anual</div></div>
+  </div>
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Índice</span><span>1 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 1: LOS 7 MÓDULOS (índice visual general) ═══ -->
+<section class="slide" id="slide-1">
+  <h2 class="slide-title">Los <em>7 módulos</em> del Radar</h2>
+  <p class="slide-subtitle">Cada módulo es un corte independiente · Adquiérelos por separado o como estudio completo</p>
+
+  <div class="modulos-grid-full">
+    <div class="mod-card mod-1">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Brand & Ad Awareness</div>
+      <div class="mod-desc">Top of Mind, Share of Mind, Conocimiento Total y Conocimiento Dormido — espacio mental de la categoría.</div>
+    </div>
+    <div class="mod-card mod-2">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Ad Awareness</div>
+      <div class="mod-desc">Presencia mental publicitaria. Qué marcas están ganando visibilidad en la mente del consumidor.</div>
+    </div>
+    <div class="mod-card mod-3">
+      <div class="mod-num">03</div>
+      <div class="mod-title">Experiencia y Satisfacción</div>
+      <div class="mod-desc">Percepción, NPS, benchmark de experiencia, problemas frecuentes y fallas en app.</div>
+    </div>
+    <div class="mod-card mod-4">
+      <div class="mod-num">04</div>
+      <div class="mod-title">Recompensas</div>
+      <div class="mod-desc">Cashback, MSI, descuentos y beneficios. Qué valora el usuario y dónde están las brechas competitivas.</div>
+    </div>
+    <div class="mod-card mod-5">
+      <div class="mod-num">05</div>
+      <div class="mod-title">Adopción y Lealtad</div>
+      <div class="mod-desc">Motivadores, obstáculos, barreras y disposición al cambio en usuarios digitales y tradicionales.</div>
+    </div>
+    <div class="mod-card mod-6">
+      <div class="mod-num">06</div>
+      <div class="mod-title">Productos y Oportunidades</div>
+      <div class="mod-desc">Servicios que los usuarios quieren contratar y qué detonaría la principalidad de una cuenta digital.</div>
+    </div>
+    <div class="mod-card mod-7">
+      <div class="mod-num">07</div>
+      <div class="mod-title">Marcas no Bancarias</div>
+      <div class="mod-desc">Confianza en marcas fuera de la banca para contratar servicios financieros. Alianzas y competidores indirectos.</div>
+    </div>
+    <div class="mod-card" style="background:transparent;border:1px dashed rgba(255,255,255,0.15);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+      <div style="font-family:'DM Serif Display',serif;font-size:20px;color:var(--orange);line-height:1.1;margin-bottom:6px;">Estudio completo</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.5;">Los 7 módulos integrados con sesión consultiva y cruces personalizados para tu marca.</div>
+    </div>
+  </div>
+
+  <hr class="sep" style="margin:24px 0 14px;">
+  <p style="font-size:12px;color:rgba(255,255,255,0.35);">Cada módulo incluye: resumen ejecutivo · reporte visual · sesión con equipo consultor · cruces personalizados por marca</p>
+
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Índice general</span><span>2 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 2: MÓDULO 01 · BRAND AWARENESS ═══ -->
+<section class="slide" id="slide-2">
+  <div class="idx-layout">
+    <div class="idx-left">
+      <h2 class="slide-title">Módulo 01:<br><em>Brand Awareness</em></h2>
+      <p class="slide-subtitle" style="margin-bottom:20px;">Espacio mental de la categoría · Todos los cortes</p>
+      <div class="idx-note orange">
+        <div class="inote-label">Qué responde</div>
+        <p>Dónde está <strong>tu marca</strong> en la mente del usuario mexicano frente a cada competidor. Qué bancos dominan el Top of Mind, qué marcas tienen "conocimiento dormido" y cómo se juega el Market Share y la principalidad por segmento demográfico.</p>
+      </div>
+      <div class="incluye-box">
+        <div class="ib-label">Cada adquisición incluye</div>
+        <div class="ib-item"><span class="chk">✓</span>Resumen ejecutivo C-Level</div>
+        <div class="ib-item"><span class="chk">✓</span>Reporte visual completo</div>
+        <div class="ib-item"><span class="chk">✓</span>Curaduría personalizada para tu marca</div>
+        <div class="ib-item"><span class="chk">✓</span>Sesión con equipo consultor</div>
+        <div class="ib-item"><span class="chk">✓</span>Cruces personalizados por marca</div>
+      </div>
+    </div>
+
+    <div class="idx-right">
+      <div class="idx-label">Índice completo — Módulo 01</div>
+      <div class="idx-list">
+        <div class="idx-sec col-orange">Top of Mind</div>
+        <div class="idx-item">Top of Mind — Total</div>
+        <div class="idx-item">Top of Mind (grupos)</div>
+        <div class="idx-item">Top of Mind por Poder Adquisitivo</div>
+        <div class="idx-item">Top of Mind por Generaciones</div>
+        <div class="idx-item">Top of Mind por Género</div>
+        <div class="idx-item">Top of Mind — Tabla completa</div>
+        <div class="idx-item">Hallazgos TOM</div>
+
+        <div class="idx-sec col-blue">Share of Mind</div>
+        <div class="idx-item">Share of Mind — Total</div>
+        <div class="idx-item">Share of Mind (grupos)</div>
+        <div class="idx-item">Share of Mind por Poder Adquisitivo</div>
+        <div class="idx-item">Share of Mind por Generaciones</div>
+        <div class="idx-item">Share of Mind por Género</div>
+        <div class="idx-item">Share of Mind — Tabla completa</div>
+        <div class="idx-item">Conclusiones Share of Mind</div>
+
+        <div class="idx-sec col-teal">Conocimiento Total</div>
+        <div class="idx-item">Conocimiento Total — Espontáneo + Asistido</div>
+        <div class="idx-item">Conocimiento Total (grupos)</div>
+        <div class="idx-item">Conocimiento Dormido</div>
+        <div class="idx-item">Conocimiento Total por Poder Adquisitivo</div>
+        <div class="idx-item">Conocimiento Total por Generaciones</div>
+        <div class="idx-item">Conocimiento Total por Género</div>
+        <div class="idx-item">Conocimiento Total — Tabla completa</div>
+        <div class="idx-item">Conclusiones Conocimiento Total</div>
+
+        <div class="idx-sec col-green">Market Share y Principalidad</div>
+        <div class="idx-item">Market Share — Bancos con cuenta activa</div>
+        <div class="idx-item">Principalidad — Banco digital principal por segmento</div>
+        <div class="idx-item">Principalidad por NSE / Generación / Género / Tipo usuario</div>
+        <div class="idx-item">Canales de interacción y frecuencia de uso de la app</div>
+        <div class="idx-item">Conclusiones generales del módulo</div>
+      </div>
+      <p class="idx-counter">Módulo 01 de 7</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Módulo 01 · Brand Awareness</span><span>3 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 3: MÓDULO 02 · AD AWARENESS ═══ -->
+<section class="slide" id="slide-3">
+  <div class="idx-layout">
+    <div class="idx-left">
+      <h2 class="slide-title">Módulo 02:<br><em>Ad Awareness</em></h2>
+      <p class="slide-subtitle" style="margin-bottom:20px;">Presencia mental publicitaria · Quién está ganando la memoria del consumidor</p>
+      <div class="idx-note orange">
+        <div class="inote-label">Qué responde</div>
+        <p>Qué marcas recuerdan los consumidores haber visto anunciadas. Identifica quién está <strong>ganando presencia mental publicitaria</strong>, cómo se distribuye el Share of Mind publicitario entre competidores y qué marcas dominan el recuerdo por segmento demográfico.</p>
+      </div>
+      <div class="incluye-box">
+        <div class="ib-label">Cada adquisición incluye</div>
+        <div class="ib-item"><span class="chk">✓</span>Resumen ejecutivo C-Level</div>
+        <div class="ib-item"><span class="chk">✓</span>Reporte visual completo</div>
+        <div class="ib-item"><span class="chk">✓</span>Curaduría personalizada para tu marca</div>
+        <div class="ib-item"><span class="chk">✓</span>Sesión con equipo consultor</div>
+        <div class="ib-item"><span class="chk">✓</span>Cruces personalizados por marca</div>
+      </div>
+    </div>
+
+    <div class="idx-right">
+      <div class="idx-label">Índice completo — Módulo 02</div>
+      <div class="idx-list">
+        <div class="idx-sec col-green">TOM Publicitario</div>
+        <div class="idx-item">Top of Mind publicitario — Total muestra</div>
+        <div class="idx-item">TOM publicitario — Tabla completa por segmento</div>
+        <div class="idx-item">TOM publicitario por Poder Adquisitivo</div>
+        <div class="idx-item">TOM publicitario por Género</div>
+        <div class="idx-item">TOM publicitario por Generación</div>
+
+        <div class="idx-sec col-orange">SOM Publicitario</div>
+        <div class="idx-item">Share of Mind publicitario — Top 5 total muestra</div>
+        <div class="idx-item">SOM publicitario por Poder Adquisitivo</div>
+        <div class="idx-item">SOM publicitario por Género</div>
+        <div class="idx-item">SOM publicitario por Generación</div>
+        <div class="idx-item">SOM publicitario por Tipo de Usuario — Digital vs Tradicional</div>
+        <div class="idx-item">SOM publicitario — Tabla completa por segmento</div>
+
+        <div class="idx-sec col-yellow">Conclusiones</div>
+        <div class="idx-item">Conclusiones generales del módulo</div>
+      </div>
+      <p class="idx-counter">Módulo 02 de 7</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Módulo 02 · Ad Awareness</span><span>4 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 4: MÓDULO 03 · EXPERIENCIA Y SATISFACCIÓN ═══ -->
+<section class="slide" id="slide-4">
+  <div class="idx-layout">
+    <div class="idx-left">
+      <h2 class="slide-title">Módulo 03:<br><em>Experiencia y<br>Satisfacción</em></h2>
+      <p class="slide-subtitle" style="margin-bottom:20px;">Percepción · NPS · Benchmark UX · Problemas frecuentes</p>
+      <div class="idx-note orange">
+        <div class="inote-label">Qué responde</div>
+        <p>Qué tan satisfechos están los usuarios con la banca digital, cómo se comparan las marcas en NPS, qué 9 aspectos funcionales evalúan mejor o peor y dónde están las <strong>fallas críticas de la experiencia</strong> que detonan abandono o recomendación.</p>
+      </div>
+      <div class="incluye-box">
+        <div class="ib-label">Cada adquisición incluye</div>
+        <div class="ib-item"><span class="chk">✓</span>Resumen ejecutivo C-Level</div>
+        <div class="ib-item"><span class="chk">✓</span>Reporte visual completo</div>
+        <div class="ib-item"><span class="chk">✓</span>Curaduría personalizada para tu marca</div>
+        <div class="ib-item"><span class="chk">✓</span>Sesión con equipo consultor</div>
+        <div class="ib-item"><span class="chk">✓</span>Cruces personalizados por marca</div>
+      </div>
+    </div>
+
+    <div class="idx-right">
+      <div class="idx-label">Índice completo — Módulo 03</div>
+      <div class="idx-list">
+        <div class="idx-sec col-red">Percepción de la categoría</div>
+        <div class="idx-item">La brecha de percepción — Tradicionales vs Digitales</div>
+        <div class="idx-item">Percepción de los no-usuarios por segmento demográfico</div>
+
+        <div class="idx-sec col-orange">Satisfacción y NPS</div>
+        <div class="idx-item">Satisfacción por marca — benchmark competitivo</div>
+        <div class="idx-item">NPS por marca — ranking de Promotores, Pasivos y Detractores</div>
+
+        <div class="idx-sec col-yellow">Los 9 aspectos funcionales</div>
+        <div class="idx-item">Los 9 aspectos — ranking de importancia y satisfacción</div>
+        <div class="idx-item">Satisfacción por aspecto × segmento demográfico</div>
+        <div class="idx-item">Satisfacción por aspecto × marca — benchmark entre jugadores</div>
+
+        <div class="idx-sec col-teal">Experiencia de app y fallas</div>
+        <div class="idx-item">UX de la app — benchmark entre marcas</div>
+        <div class="idx-item">¿Qué pasa cuando algo sale mal? — incidencia y resolución</div>
+        <div class="idx-item">Los tres tipos de falla — saldo de opinión por marca</div>
+
+        <div class="idx-sec col-pink">Conclusiones</div>
+        <div class="idx-item">Conclusiones generales del módulo</div>
+      </div>
+      <p class="idx-counter">Módulo 03 de 7</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Módulo 03 · Experiencia</span><span>5 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 5: MÓDULO 04 · RECOMPENSAS ═══ -->
+<section class="slide" id="slide-5">
+  <div class="idx-layout">
+    <div class="idx-left">
+      <h2 class="slide-title">Módulo 04:<br><em>Recompensas</em></h2>
+      <p class="slide-subtitle" style="margin-bottom:20px;">Cashback · MSI · Descuentos · Benchmark competitivo</p>
+      <div class="idx-note orange">
+        <div class="inote-label">Qué responde</div>
+        <p>Qué tipo de recompensas mueve a cada segmento — cashback, MSI, descuentos, millas, seguros o inversiones — y cómo se comparan las marcas en la <strong>oferta y percepción de valor</strong>. Identifica brechas y oportunidades en la estrategia de beneficios.</p>
+      </div>
+      <div class="incluye-box">
+        <div class="ib-label">Cada adquisición incluye</div>
+        <div class="ib-item"><span class="chk">✓</span>Resumen ejecutivo C-Level</div>
+        <div class="ib-item"><span class="chk">✓</span>Reporte visual completo</div>
+        <div class="ib-item"><span class="chk">✓</span>Curaduría personalizada para tu marca</div>
+        <div class="ib-item"><span class="chk">✓</span>Sesión con equipo consultor</div>
+        <div class="ib-item"><span class="chk">✓</span>Cruces personalizados por marca</div>
+      </div>
+    </div>
+
+    <div class="idx-right">
+      <div class="idx-label">Índice completo — Módulo 04</div>
+      <div class="idx-list">
+        <div class="idx-sec col-purple">Panorama de recompensas</div>
+        <div class="idx-item">Preferencia total — ranking de tipos de recompensa</div>
+        <div class="idx-item">Cashback, MSI, Descuentos, Millas/Puntos, Seguros, Inversión, Asesoría, Salud</div>
+
+        <div class="idx-sec col-orange">Segmentación de preferencias</div>
+        <div class="idx-item">Recompensas por Poder Adquisitivo — Affluent (A/B) vs Mass Market (C/D)</div>
+        <div class="idx-item">Recompensas por Generación — Gen Z, Millennials, Gen X+Boomers</div>
+        <div class="idx-item">Recompensas por Género — Hombres vs Mujeres</div>
+        <div class="idx-item">Digital vs Tradicional — qué valora cada tipo de usuario</div>
+
+        <div class="idx-sec col-green">Benchmark competitivo</div>
+        <div class="idx-item">Benchmark Cashback — ranking por marca con máximo % ofrecido</div>
+        <div class="idx-item">Tabla benchmark completa de promociones y recompensas por marca</div>
+
+        <div class="idx-sec col-yellow">Finsights estratégicos</div>
+        <div class="idx-item">Finsight #1 — dinámica competitiva de la categoría</div>
+        <div class="idx-item">Finsight #2 — territorios subatendidos por la oferta actual</div>
+        <div class="idx-item">Finsight #3 — palanca estructural de conversión</div>
+
+        <div class="idx-sec col-teal">Conclusiones</div>
+        <div class="idx-item">Conclusiones generales del módulo</div>
+      </div>
+      <p class="idx-counter">Módulo 04 de 7</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Módulo 04 · Recompensas</span><span>6 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 6: MÓDULO 05 · ADOPCIÓN Y LEALTAD ═══ -->
+<section class="slide" id="slide-6">
+  <div class="idx-layout">
+    <div class="idx-left">
+      <h2 class="slide-title">Módulo 05:<br><em>Adopción<br>y Lealtad</em></h2>
+      <p class="slide-subtitle" style="margin-bottom:20px;">Motivadores · Obstáculos · Barreras · Disposición al cambio</p>
+      <div class="idx-note orange">
+        <div class="inote-label">Qué responde</div>
+        <p>Por qué los usuarios adoptan — o rechazan — una cuenta digital. Qué drivers detonan conversión, qué obstáculos frenan adopción, qué nivel de <strong>lealtad real</strong> existe en el mercado y qué tendría que ofrecer una marca para ganar cada segmento. Análisis separado para usuarios digitales y tradicionales.</p>
+      </div>
+      <div class="incluye-box">
+        <div class="ib-label">Cada adquisición incluye</div>
+        <div class="ib-item"><span class="chk">✓</span>Resumen ejecutivo C-Level</div>
+        <div class="ib-item"><span class="chk">✓</span>Reporte visual completo</div>
+        <div class="ib-item"><span class="chk">✓</span>Curaduría personalizada para tu marca</div>
+        <div class="ib-item"><span class="chk">✓</span>Sesión con equipo consultor</div>
+        <div class="ib-item"><span class="chk">✓</span>Cruces personalizados por marca</div>
+      </div>
+    </div>
+
+    <div class="idx-right">
+      <div class="idx-label">Índice completo — Módulo 05</div>
+      <div class="idx-list">
+        <div class="idx-sec col-teal">Usuarios Digitales</div>
+        <div class="idx-item">Drivers de apertura — ranking por primera mención</div>
+        <div class="idx-item">Obstáculos percibidos — ya siendo usuarios</div>
+
+        <div class="idx-sec col-olight">Usuarios Tradicionales</div>
+        <div class="idx-item">Drivers potenciales — primera mención</div>
+        <div class="idx-item">Barreras — por qué NO han abierto cuenta digital</div>
+        <div class="idx-item">Obstáculos percibidos — preocupaciones del tradicional</div>
+
+        <div class="idx-sec col-green">Lealtad y disposición al cambio</div>
+        <div class="idx-item">Lealtad del usuario digital — ¿se quedaría con su marca?</div>
+        <div class="idx-item">Disposición activa al cambio</div>
+
+        <div class="idx-sec col-pink">Síntesis estratégica</div>
+        <div class="idx-item">Los 4 segmentos estratégicos del mercado</div>
+        <div class="idx-item">Estrategia por segmento — playbook de activación</div>
+        <div class="idx-item">Conclusiones generales del módulo</div>
+      </div>
+      <p class="idx-counter">Módulo 05 de 7</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Módulo 05 · Adopción y Lealtad</span><span>7 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 7: MÓDULO 06 · PRODUCTOS Y OPORTUNIDADES ═══ -->
+<section class="slide" id="slide-7">
+  <div class="idx-layout">
+    <div class="idx-left">
+      <h2 class="slide-title">Módulo 06:<br><em>Productos y<br>Oportunidades</em></h2>
+      <p class="slide-subtitle" style="margin-bottom:20px;">Roadmap de producto · Necesidades no cubiertas · Principalidad</p>
+      <div class="idx-note orange">
+        <div class="inote-label">Qué responde</div>
+        <p>Qué productos financieros quiere contratar el mexicano con su cuenta digital — TDC, cuentas de ahorro, créditos, inversiones, seguros — y qué atributos detonarían que una cuenta digital se convierta en <strong>la principal</strong>. Orienta roadmap de producto y estrategia comercial con evidencia de mercado.</p>
+      </div>
+      <div class="incluye-box">
+        <div class="ib-label">Cada adquisición incluye</div>
+        <div class="ib-item"><span class="chk">✓</span>Resumen ejecutivo C-Level</div>
+        <div class="ib-item"><span class="chk">✓</span>Reporte visual completo</div>
+        <div class="ib-item"><span class="chk">✓</span>Curaduría personalizada para tu marca</div>
+        <div class="ib-item"><span class="chk">✓</span>Sesión con equipo consultor</div>
+        <div class="ib-item"><span class="chk">✓</span>Cruces personalizados por marca</div>
+      </div>
+    </div>
+
+    <div class="idx-right">
+      <div class="idx-label">Índice completo — Módulo 06</div>
+      <div class="idx-list">
+        <div class="idx-sec col-coral">Panorama de productos</div>
+        <div class="idx-item">Interés por producto — ranking base total</div>
+        <div class="idx-item">TDC, Cuenta de ahorro, Crédito, Inversiones, Seguros, Hipoteca, Afore</div>
+
+        <div class="idx-sec col-orange">Segmentación de demanda</div>
+        <div class="idx-item">Productos por Poder Adquisitivo — Affluent (A/B) vs Mass Market (C/D)</div>
+        <div class="idx-item">Productos por Generación — Gen Z, Millennials, Gen X+Boomers</div>
+        <div class="idx-item">Productos por Género — Hombres vs Mujeres</div>
+        <div class="idx-item">Productos por Tipo de Usuario — Digital vs Tradicional</div>
+
+        <div class="idx-sec col-purple">Oportunidades de principalidad</div>
+        <div class="idx-item">Atributos que moverían la aguja para detonar principalidad</div>
+        <div class="idx-item">Los 4 territorios de oportunidad</div>
+
+        <div class="idx-sec col-yellow">Finsight estratégico</div>
+        <div class="idx-item">El Easy Win de la categoría</div>
+
+        <div class="idx-sec col-teal">Conclusiones</div>
+        <div class="idx-item">Conclusiones generales del módulo</div>
+      </div>
+      <p class="idx-counter">Módulo 06 de 7</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Módulo 06 · Productos</span><span>8 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 8: MÓDULO 07 · MARCAS NO BANCARIAS ═══ -->
+<section class="slide" id="slide-8">
+  <div class="idx-layout">
+    <div class="idx-left">
+      <h2 class="slide-title">Módulo 07:<br><em>Marcas<br>no Bancarias</em></h2>
+      <p class="slide-subtitle" style="margin-bottom:20px;">Confianza para servicios financieros · Alianzas · Competidores indirectos</p>
+      <div class="idx-note orange">
+        <div class="inote-label">Qué responde</div>
+        <p>Con qué marcas no-bancarias el consumidor mexicano se sentiría cómodo contratando <strong>servicios financieros</strong> — cuenta, tarjeta, crédito, seguros. Identifica por categoría (eCommerce, retail, tecnología, plataformas, conveniencia) quién podría ser aliado estratégico, quién compite indirectamente y qué marcas tienen licencia mental para desintermediar a la banca.</p>
+      </div>
+      <div class="incluye-box">
+        <div class="ib-label">Cada adquisición incluye</div>
+        <div class="ib-item"><span class="chk">✓</span>Resumen ejecutivo C-Level</div>
+        <div class="ib-item"><span class="chk">✓</span>Reporte visual completo</div>
+        <div class="ib-item"><span class="chk">✓</span>Curaduría personalizada para tu marca</div>
+        <div class="ib-item"><span class="chk">✓</span>Sesión con equipo consultor</div>
+        <div class="ib-item"><span class="chk">✓</span>Cruces personalizados por marca</div>
+      </div>
+    </div>
+
+    <div class="idx-right">
+      <div class="idx-label">Índice completo — Módulo 07</div>
+      <div class="idx-list">
+        <div class="idx-sec col-mint">Comercio Electrónico</div>
+        <div class="idx-item">Confianza en Amazon, Mercado Libre, PayPal</div>
+        <div class="idx-item">Cruces por NSE, Generación, Género y Tipo de Usuario</div>
+
+        <div class="idx-sec col-orange">Cadenas Comerciales</div>
+        <div class="idx-item">Confianza en Walmart, Bodega Aurrera, Sam's Club, Costco, Soriana, La Comer, Sanborns, Elektra, Coppel, Liverpool</div>
+        <div class="idx-item">Cruces por NSE, Generación, Género y Tipo de Usuario</div>
+
+        <div class="idx-sec col-blue">Tecnología y Telecomunicaciones</div>
+        <div class="idx-item">Confianza en Google, Apple, Microsoft, Huawei, Samsung, Telcel, AT&T, Movistar</div>
+        <div class="idx-item">Cruces por NSE, Generación, Género y Tipo de Usuario</div>
+
+        <div class="idx-sec col-pink">Plataformas Digitales y Redes Sociales</div>
+        <div class="idx-item">Confianza en Uber, DiDi, Rappi, Netflix, Spotify, WhatsApp, Facebook, TikTok</div>
+        <div class="idx-item">Cruces por NSE, Generación, Género y Tipo de Usuario</div>
+
+        <div class="idx-sec col-yellow">Tiendas de Conveniencia y Farmacias</div>
+        <div class="idx-item">Confianza en OXXO, 7-Eleven, Circle K, Farmacias del Ahorro, Farmacias Guadalajara, Farmacias Similares</div>
+        <div class="idx-item">Cruces por NSE, Generación, Género y Tipo de Usuario</div>
+
+        <div class="idx-sec col-teal">Finsights y conclusiones</div>
+        <div class="idx-item">Mapa de confianza — quién tiene permiso para ofrecer servicios financieros</div>
+        <div class="idx-item">Conclusiones generales del módulo</div>
+      </div>
+      <p class="idx-counter">Módulo 07 de 7</p>
+    </div>
+  </div>
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Módulo 07 · Marcas no Bancarias</span><span>9 / 10</span></div>
+</section>
+
+
+<!-- ═══ SLIDE 9: CIERRE / CTA ═══ -->
+<section class="slide slide-cover" id="slide-9">
+  <div class="eyebrow">Finsights by Global Tag · Radar 2025</div>
+  <h1>7 módulos.<br>Una sola <em>verdad</em><br>sobre tu usuario.</h1>
+  <p class="subtitle">Adquiere el módulo que tu equipo necesita — o el estudio completo con sesión consultiva y curaduría personalizada para tu marca.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:720px;margin-bottom:40px;">
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:28px 24px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:10px;">Por módulo</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:42px;color:var(--white);margin-bottom:6px;">Modular</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">Adquiere solo los módulos que tu equipo necesita. Cada uno llega curado para tu marca.</div>
+    </div>
+    <div style="background:rgba(232,80,10,0.1);border:1px solid rgba(232,80,10,0.3);border-radius:12px;padding:28px 24px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Estudio completo</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:42px;color:var(--orange);margin-bottom:6px;">Los 7</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">Los 7 módulos integrados con sesión consultiva C-Level, cruces personalizados y seguimiento post-entrega.</div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-text">
+      <h3>¿Listos para el siguiente paso?</h3>
+      <p>Agendemos una sesión para definir qué módulos le hacen más sentido a tu marca.</p>
+    </div>
+  </div>
+
+  <div class="slide-footer"><span>Finsights by Global Tag · Radar 2025</span><span>Cierre</span><span>10 / 10</span></div>
+</section>
+
+<div class="scroll-hint">scroll <span class="arr">↓</span></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.nav-dot');
+  function scrollToSlide(i) { slides[i].scrollIntoView({behavior:'smooth'}); }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const i = [...slides].indexOf(e.target);
+        dots.forEach(d => d.classList.remove('active'));
+        if (dots[i]) dots[i].classList.add('active');
+      }
+    });
+  }, {threshold:0.5});
+  slides.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
