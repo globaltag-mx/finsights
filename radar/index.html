@@ -145,7 +145,41 @@
   .scroll-hint { position:fixed; bottom:24px; right:40px; font-size:11px; color:rgba(255,255,255,0.25); letter-spacing:2px; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
   .arr { animation:bounce 2s infinite; display:inline-block; }
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+@media (max-width: 768px) {
+    .nav { padding:12px 20px; }
+    .nav-dots { display:none; }
+    .nav-brand { font-size:11px; }
 
+    .slide { padding:80px 24px 40px; min-height:auto; }
+
+    .slide-cover h1 { font-size:clamp(36px,10vw,56px); }
+    .subtitle { font-size:15px; margin-bottom:32px; }
+    .cover-stats { gap:24px; }
+    .cover-stat .num { font-size:28px; }
+
+    .modulos-grid-full { grid-template-columns:1fr 1fr; gap:10px; }
+    .mod-card { padding:14px 12px; }
+    .mod-num { font-size:22px; }
+    .mod-title { font-size:12px; }
+    .mod-desc { font-size:10px; }
+
+    .idx-layout { grid-template-columns:1fr; gap:24px; }
+    .slide-title { font-size:clamp(24px,7vw,36px); }
+    .slide-subtitle { font-size:13px; }
+
+    .idx-note p { font-size:12px; }
+    .incluye-box { display:none; }
+
+    .slide-footer { left:24px; right:24px; font-size:9px; }
+    .scroll-hint { display:none; }
+
+    .cta-box { padding:20px; }
+    .cta-box .cta-text h3 { font-size:20px; }
+
+    div[style*="grid-template-columns:1fr 1fr"] { 
+      grid-template-columns:1fr !important; 
+    }
+  }
   @media print {
     @page { margin:0; size:1440px 900px landscape; }
     .nav, .scroll-hint { display:none !important; }
