@@ -311,7 +311,64 @@
   .arr { animation:bounce 2s infinite; display:inline-block; }
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
 
+@media (max-width: 768px) {
+  .nav { padding:12px 20px; }
+  .nav-dots { display:none; }
+  .nav-brand { font-size:11px; }
 
+  .slide { padding:80px 24px 40px; min-height:auto; }
+
+  .slide-cover h1 { font-size:clamp(32px,9vw,52px); }
+  .subtitle { font-size:15px; margin-bottom:28px; }
+  .cover-stats { gap:20px; }
+  .cover-stat .num { font-size:26px; }
+  .cover-logo { top:70px; right:24px; }
+
+  .slide-title { font-size:clamp(24px,7vw,36px); }
+  .slide-subtitle { font-size:13px; margin-bottom:20px; }
+
+  .meta-grid { grid-template-columns:1fr; gap:12px; margin-bottom:24px; }
+  .meta-card { padding:18px 16px; }
+  .meta-card .mc-num { font-size:36px; }
+
+  .finsights-box { padding:18px 20px; }
+  .finsights-box p { font-size:13px; }
+
+  .modulos-grid-full { grid-template-columns:1fr 1fr; gap:10px; }
+  .mod-card { padding:14px 12px; }
+  .mod-num { font-size:22px; }
+  .mod-title { font-size:11px; }
+  .mod-desc { display:none; }
+
+  .two-col { grid-template-columns:1fr; gap:24px; }
+
+  .uso-grid { grid-template-columns:1fr; gap:12px; }
+  .soluciones-grid { grid-template-columns:1fr; gap:10px; }
+
+  .metrics-grid { grid-template-columns:1fr; gap:12px; }
+  .metric-card { padding:20px 18px; }
+  .m-value { font-size:40px; }
+
+  .bar-list { max-width:100%; }
+  .bar-label { width:90px; font-size:11px; }
+  .grupo-badge { display:none; }
+
+  .nse-table th, .nse-table td { font-size:11px; padding:6px 8px; }
+
+  .modulos-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .mod-pill { font-size:11px; padding:10px 12px; }
+
+  .price-box { padding:20px 16px; }
+  .price-row { flex-direction:column; gap:8px; }
+  .price-val { font-size:22px; }
+
+  .slide-footer { left:24px; right:24px; font-size:9px; }
+  .scroll-hint { display:none; }
+
+  div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns:1fr !important;
+  }
+}
 @media print {
   @page { margin: 0; size: 1440px 900px landscape; }
   .nav, .scroll-hint { display: none !important; }
