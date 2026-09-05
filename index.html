@@ -152,6 +152,7 @@ body.lectura .lector{display:block}
   <p class="sub">Un hub de inteligencia de mercado centrado en el ecosistema bancario mexicano.</p>
 </section>
 
+
 <section class="sec" id="datos" style="padding-top:24px">
   <div class="joygrid">
 
@@ -210,6 +211,7 @@ body.lectura .lector{display:block}
       <div class="t">Ama la app, no suelta la sucursal<span class="flecha">→</span></div>
       <div class="n">30%</div>
       <p class="res">Solo 3 de cada 10 se cambiarían por completo a una cuenta sin sucursales.</p>
+      <svg class="minisvg" id="minihib" viewBox="0 0 400 150"></svg>
       <div class="det">
         <svg id="chhib" viewBox="0 0 820 170"></svg>
         <p>Solo 30% se cambiaría por completo a una cuenta sin sucursales; 53% dice que no. El usuario mexicano es híbrido: la app para lo diario, la sucursal para lo importante.</p>
@@ -292,6 +294,7 @@ body.lectura .lector{display:block}
 
 
 
+
 <div class="cinta" id="cinta"><div class="track"><span class="it">Diarios de uso</span><span class="pt">●</span><span class="it">Usos y actitudes</span><span class="pt">●</span><span class="it">Customer journey</span><span class="pt">●</span><span class="it">Pre y post test publicitario</span><span class="pt">●</span><span class="it">Promociones y recompensas</span><span class="pt">●</span><span class="it">Segmentación</span><span class="pt">●</span><span class="it">Exploraciones con ConversIA</span><span class="pt">●</span><span class="it">Cortes a la medida</span><span class="pt">●</span><span class="it">Diarios de uso</span><span class="pt">●</span><span class="it">Usos y actitudes</span><span class="pt">●</span><span class="it">Customer journey</span><span class="pt">●</span><span class="it">Pre y post test publicitario</span><span class="pt">●</span><span class="it">Promociones y recompensas</span><span class="pt">●</span><span class="it">Segmentación</span><span class="pt">●</span><span class="it">Exploraciones con ConversIA</span><span class="pt">●</span><span class="it">Cortes a la medida</span><span class="pt">●</span></div></div>
 
 <section class="vband" id="video">
@@ -324,7 +327,7 @@ body.lectura .lector{display:block}
 
 <section class="sec" id="soluciones">
   <div class="kicker">Soluciones especializadas</div>
-  <h2>Lo que hacemos para equipos financieros</h2>
+  <h2>Lo que hacemos para nuestros clientes</h2>
   <div class="solgrid">
     <div class="sol"><span class="num" style="color:#e87ba4">01</span><h3>UX Research</h3><p>Tu app frente a las demás: benchmark de experiencia por flujos, esfuerzo medido con KLM y fricciones del journey.</p></div>
     <div class="sol"><span class="num" style="color:#1baf7a">02</span><h3>Prueba de concepto y producto</h3><p>Valida conceptos, mensajes y productos antes de invertir: claridad, atractivo e intención de contratación.</p></div>
@@ -588,6 +591,20 @@ const CAMBIO=[['Stori',8,15],['Openbank',10.52,13],['Ualá',16,15],['Hey Banco',
     s+=`<text x="${cx}" y="${118-bh}" text-anchor="middle" font-size="10" fill="${NAVY}" font-family="DM Mono,monospace">${d[1]}</text>`;
     s+=`<rect x="${x}" y="${124-bh}" width="34" height="${Math.max(bh,6)}" rx="4" fill="${colorMarca(d[0])}"/>`;
     s+=`<text x="${cx}" y="${138}" text-anchor="middle" font-size="8" fill="#6a719c" font-family="Archivo,sans-serif">${CORTO[d[0]]||d[0]}</text>`;
+  });
+  svg.innerHTML=s;
+})();
+
+(function(){
+  const svg=document.getElementById('minihib'); if(!svg) return;
+  const datos=[['Gen Z',37.9],['Millennials',25.7],['Gen X y más',20.2]];
+  const L=128,R=62,T=16,rh=30,gap=12;
+  let s=`<text x="${L}" y="${T-4}" font-size="10.5" fill="${GRIS}" font-family="DM Mono,monospace">se cambiaría por completo</text>`;
+  datos.forEach((d,i)=>{
+    const y=T+6+i*(rh+gap), w=(400-L-R)*d[1]/40;
+    s+=`<text x="${L-10}" y="${y+rh/2+5}" text-anchor="end" font-size="13" fill="${NAVY}" font-family="Archivo,sans-serif">${d[0]}</text>`;
+    s+=`<rect x="${L}" y="${y}" width="${w}" height="${rh}" rx="4" fill="${i===0?NAR:GRIS2}"/>`;
+    s+=`<text x="${L+w+8}" y="${y+rh/2+5}" font-size="13" fill="${NAVY}" font-family="DM Mono,monospace">${d[1]}%</text>`;
   });
   svg.innerHTML=s;
 })();
