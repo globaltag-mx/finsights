@@ -359,6 +359,7 @@ body.lectura .lector{display:block}
 
 <script>
 const NAR='#eb6834', NAVY='#1a1a40', GRIS='#8a90b8', GRIS2='#c5cbdf';
+const MOV=matchMedia('(max-width:700px)').matches;
 const MARCA={'Nu':'#eb6834','Mercado Pago':'#2a78d6','Spin':'#1baf7a','Stori':'#eda100','Plata':'#e87ba4','Banco Plata':'#e87ba4','Ualá':'#8b5cf6','Klar':'#15b5c8','Hey Banco':'#0f9d8f','Openbank':'#d64580','BBVA':'#0d2f6d','BBVA Digital':'#0d2f6d','Banamex':'#c62828','Bancoppel':'#f5c518','Like U':'#84cc16','PayPal':'#64748b'};
 const colorMarca=n=>MARCA[n]||GRIS2;
 
@@ -412,7 +413,7 @@ document.getElementById('lect-met').addEventListener('click',()=>{
 
 // ---------- helpers ----------
 function etiquetaBurbuja(p, valor, colorIn, colorOut, H){
-  let s=''; let fs=Math.max(10,Math.min(19,p.r/3));
+  let s=''; let fs=Math.max(MOV?11:10,Math.min(19,p.r/3));
   const ancho=t=>t.length*fs*0.58;
   if(ancho(p.n)<=1.75*p.r && p.r>26){
     s+=`<text x="${p.x}" y="${p.y-3}" text-anchor="middle" font-size="${fs}" fill="${colorIn}" font-family="Archivo,sans-serif" font-weight="600">${p.n}</text>`;
@@ -428,10 +429,10 @@ function etiquetaBurbuja(p, valor, colorIn, colorOut, H){
     const abajo=H && p.y>H/2;
     if(abajo){
       s+=`<line x1="${p.x}" x2="${p.x}" y1="${p.y+p.r}" y2="${p.y+p.r+5}" stroke="${colorOut}" stroke-width="1" opacity=".4"/>`;
-      s+=`<text x="${p.x}" y="${p.y+p.r+17}" text-anchor="middle" font-size="11" fill="${colorOut}" stroke="#ffffff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round" font-family="Archivo,sans-serif">${p.n} · ${valor}</text>`;
+      s+=`<text x="${p.x}" y="${p.y+p.r+17}" text-anchor="middle" font-size="${MOV?13:11}" fill="${colorOut}" stroke="#ffffff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round" font-family="Archivo,sans-serif">${p.n} · ${valor}</text>`;
     } else {
       s+=`<line x1="${p.x}" x2="${p.x}" y1="${p.y-p.r}" y2="${p.y-p.r-5}" stroke="${colorOut}" stroke-width="1" opacity=".4"/>`;
-      s+=`<text x="${p.x}" y="${p.y-p.r-9}" text-anchor="middle" font-size="11" fill="${colorOut}" stroke="#ffffff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round" font-family="Archivo,sans-serif">${p.n} · ${valor}</text>`;
+      s+=`<text x="${p.x}" y="${p.y-p.r-9}" text-anchor="middle" font-size="${MOV?13:11}" fill="${colorOut}" stroke="#ffffff" stroke-width="3.5" paint-order="stroke" stroke-linejoin="round" font-family="Archivo,sans-serif">${p.n} · ${valor}</text>`;
     }
   }
   return s;
@@ -453,15 +454,15 @@ function empaca(datos,W,H,k,minR){
 }
 function barrasH(svgId, datos, unidad, notas){
   const svg=document.getElementById(svgId); if(!svg) return;
-  const W=820,L=150,R=90,T=10,rh=30,gap=8;
+  const W=820,L=MOV?215:150,R=MOV?95:90,T=10,rh=MOV?40:30,gap=MOV?10:8,FS=MOV?18.5:13.5;
   const mx=Math.max(...datos.map(d=>d[1]));
   let s='';
   datos.forEach((d,i)=>{
     const y=T+i*(rh+gap), w=(W-L-R)*d[1]/mx;
     const c=(d[2]&&d[2][0]==='#')?d[2]:(d[2]==='nar'?NAR:(d[2]==='gris'||i>0?GRIS2:NAR));
-    s+=`<text x="${L-12}" y="${y+rh/2+5}" text-anchor="end" font-size="13.5" fill="${NAVY}" font-family="Archivo,sans-serif">${d[0]}</text>`;
+    s+=`<text x="${L-12}" y="${y+rh/2+6}" text-anchor="end" font-size="${FS}" fill="${NAVY}" font-family="Archivo,sans-serif">${d[0]}</text>`;
     s+=`<rect x="${L}" y="${y}" width="${Math.max(w,4)}" height="${rh}" rx="4" fill="${c}"/>`;
-    s+=`<text x="${L+w+10}" y="${y+rh/2+5}" font-size="13.5" fill="${NAVY}" font-family="DM Mono,monospace">${d[1]}${unidad}</text>`;
+    s+=`<text x="${L+w+10}" y="${y+rh/2+6}" font-size="${FS}" fill="${NAVY}" font-family="DM Mono,monospace">${d[1]}${unidad}</text>`;
   });
   svg.setAttribute('viewBox',`0 0 ${W} ${T+datos.length*(rh+gap)+4}`);
   svg.innerHTML=s;
@@ -476,10 +477,12 @@ const TOM={
 };
 function pintaTOM(seg,svgId){
   const svg=document.getElementById(svgId||'chtom');
-  const puestos=empaca(TOM[seg],960,400,16,15);
+  const W=MOV?520:960,H=MOV?460:400,K=MOV?12:16,MR=MOV?13:15;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const puestos=empaca(TOM[seg],W,H,K,MR);
   let s='';
   puestos.forEach(p=>{s+=`<circle cx="${p.x}" cy="${p.y}" r="${p.r}" fill="${colorMarca(p.n)}" fill-opacity="${MARCA[p.n]?0.92:1}" stroke="#fff" stroke-width="2"/>`;});
-  puestos.forEach(p=>{s+=etiquetaBurbuja(p,p.v+'%','#1a1a40','#1a1a40',400);});
+  puestos.forEach(p=>{s+=etiquetaBurbuja(p,p.v+'%','#1a1a40','#1a1a40',MOV?460:400);});
   svg.innerHTML=s;
 }
 pintaTOM('Total','chtom');
@@ -520,10 +523,12 @@ const CTAS=[['Bancoppel',37],['BBVA Digital',27.1],['Like U',20.4],['Banamex',20
 const SUCURSAL=['Bancoppel','BBVA Digital','Like U','Banamex'];
 (function(){
   const svg=document.getElementById('chbub');
-  const puestos=empaca(CTAS,960,500,15.5,12);
+  const W=MOV?520:960,H=MOV?560:500,K=MOV?9.5:15.5,MR=MOV?9:12;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const puestos=empaca(CTAS,W,H,K,MR);
   let s='';
   puestos.forEach(p=>{s+=`<circle cx="${p.x}" cy="${p.y}" r="${p.r}" fill="${colorMarca(p.n)}" fill-opacity=".92" stroke="#fff" stroke-width="2"/>`;});
-  puestos.forEach(p=>{s+=etiquetaBurbuja(p,p.v+'M','#1a1a40','#1a1a40',500);});
+  puestos.forEach(p=>{s+=etiquetaBurbuja(p,p.v+'M','#1a1a40','#1a1a40',MOV?560:500);});
   svg.innerHTML=s;
 })();
 
@@ -531,14 +536,14 @@ const SUCURSAL=['Bancoppel','BBVA Digital','Like U','Banamex'];
 const AGO=[['Ualá',15],['Stori',15],['Nu',13],['Openbank',13],['Mercado Pago',12],['Klar',8.5],['Hey Banco',8],['Banamex',6.28],['BBVA Digital',2.65]];
 (function(){
   const svg=document.getElementById('chbar');
-  const W=960,L=150,R=90,T=12,rh=28,gap=7;
+  const W=960,L=MOV?230:150,R=MOV?120:90,T=12,rh=MOV?44:28,gap=MOV?10:7,FS=MOV?22:13.5;
   const mx=Math.max(...AGO.map(d=>d[1]));
   let s='';
   AGO.forEach((d,i)=>{
     const y=T+i*(rh+gap), w=(W-L-R)*d[1]/mx;
-    s+=`<text x="${L-12}" y="${y+rh/2+5}" text-anchor="end" font-size="13.5" fill="${NAVY}" font-family="Archivo,sans-serif">${d[0]}</text>`;
+    s+=`<text x="${L-12}" y="${y+rh/2+7}" text-anchor="end" font-size="${FS}" fill="${NAVY}" font-family="Archivo,sans-serif">${d[0]}</text>`;
     s+=`<rect x="${L}" y="${y}" width="${Math.max(w,4)}" height="${rh}" rx="4" fill="${colorMarca(d[0])}"/>`;
-    s+=`<text x="${L+w+10}" y="${y+rh/2+5}" font-size="13.5" fill="${NAVY}" font-family="DM Mono,monospace">${d[1]}%</text>`;
+    s+=`<text x="${L+w+10}" y="${y+rh/2+7}" font-size="${FS}" fill="${NAVY}" font-family="DM Mono,monospace">${d[1]}%</text>`;
   });
   svg.setAttribute('viewBox',`0 0 960 ${T+AGO.length*(rh+gap)+4}`);
   svg.innerHTML=s;
@@ -546,19 +551,19 @@ const AGO=[['Ualá',15],['Stori',15],['Nu',13],['Openbank',13],['Mercado Pago',1
 const CAMBIO=[['Stori',8,15],['Openbank',10.52,13],['Ualá',16,15],['Hey Banco',9,8],['Nu',15,13],['Mercado Pago',14,12],['Fondeadora',10.5,8],['BBVA Digital',5.8,2.65]];
 (function(){
   const svg=document.getElementById('chdmb');
-  const W=960,L=150,R=110,T=14,rh=36;
+  const W=960,L=MOV?230:150,R=MOV?150:110,T=14,rh=MOV?52:36,FS=MOV?22:13.5;
   const vals=CAMBIO.flatMap(d=>[d[1],d[2]]);
   const mn=Math.min(...vals)-1, mx=Math.max(...vals)+1;
   const X=v=>L+(W-L-R)*(v-mn)/(mx-mn);
-  let s=`<text x="${L}" y="10" font-size="11" fill="${GRIS}" font-family="DM Mono,monospace">cierre 2025 → agosto 2026 (naranja)</text>`;
+  let s=`<text x="${L}" y="10" font-size="${MOV?17:11}" fill="${GRIS}" font-family="DM Mono,monospace">cierre 2025 → agosto 2026 (naranja)</text>`;
   CAMBIO.forEach((d,i)=>{
     const y=T+12+i*rh+rh/2, x1=X(d[1]), x2=X(d[2]);
-    s+=`<text x="${L-12}" y="${y+5}" text-anchor="end" font-size="13.5" fill="${NAVY}" font-family="Archivo,sans-serif">${d[0]}</text>`;
+    s+=`<text x="${L-12}" y="${y+7}" text-anchor="end" font-size="${FS}" fill="${NAVY}" font-family="Archivo,sans-serif">${d[0]}</text>`;
     s+=`<line x1="${x1}" x2="${x2}" y1="${y}" y2="${y}" stroke="#dfe8f2" stroke-width="3"/>`;
     s+=`<circle cx="${x1}" cy="${y}" r="6" fill="${GRIS}"/>`;
     s+=`<circle cx="${x2}" cy="${y}" r="7" fill="${NAR}" stroke="#fff" stroke-width="2"/>`;
     const delta=d[2]-d[1], dtxt=(delta>0?'+':'')+(Math.round(delta*100)/100)+' pts';
-    s+=`<text x="${W-R+16}" y="${y+5}" font-size="12.5" fill="${delta>0?NAVY:GRIS}" font-family="DM Mono,monospace">${dtxt}</text>`;
+    s+=`<text x="${W-R+16}" y="${y+7}" font-size="${MOV?20:12.5}" fill="${delta>0?NAVY:GRIS}" font-family="DM Mono,monospace">${dtxt}</text>`;
   });
   svg.setAttribute('viewBox',`0 0 960 ${T+12+CAMBIO.length*rh+8}`);
   svg.innerHTML=s;
